@@ -57,53 +57,66 @@ var model = {
     }
 };
 
+function parseGuess(guess) {
+    var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+
+    if (guess === null || guess.length !== 2) {
+        alert("Oops, please enter a letter and number on the board.");
+    } else {
+        var firstChar = guess.charAt(0);
+        var row = alphabet.indexOf(firstChar);
+        var column = guess.charAt(1);
+
+        if (isNaN(row) || isNaN(column)) {
+            alert("Oops, that isn't on the board.");
+        } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+            alert("Oops, that's off the board.");
+        } else {
+            return row + column;
+        }
+    }
+    return null;
+}
+
 var controller = {
     guesses: 0,
 
     processGuess: function(guess) {
-        // DO STUFF
-    },
-
-    parseGuess: function(guess) {
-        var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
-
-        if (guess === null || guess.length !== 2) {
-            alert("Oops, please enter a letter and number on the board.");
-        } else {
-            var firstChar = guess.charAt(0);
-            var row = alphabet.indexOf(firstChar);
-            var column = guess.charAt(1);
-
-            if (isNaN(row) || isNaN(column)) {
-                alert("Oops, that isn't on the board.");
-            } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
-                alert("Oops, that's off the board.");
-            } else {
-                return row + column;
+        var location = parseGuess(guess); // should this be this.parseGuess(location)?
+        if (location) {
+            this.guesses++;
+            var hit = model.fire(location);
+            if (hit && model.shipSunk === model.numShips) {
+                view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses!");
             }
         }
-        return null;
-    }
-
+    },
 };
 
-model.fire("53");
+// model.fire("53");
 
-model.fire("06");
-model.fire("16");
-model.fire("26");
+// model.fire("06");
+// model.fire("16");
+// model.fire("26");
 
-model.fire("34");
-model.fire("24");
-model.fire("44");
+// model.fire("34");
+// model.fire("24");
+// model.fire("44");
 
-model.fire("12");
-model.fire("11");
-model.fire("10");
+// model.fire("12");
+// model.fire("11");
+// model.fire("10");
 
-// console.log(controller.parseGuess("A0"));
-// console.log(controller.parseGuess("B6"));
-// console.log(controller.parseGuess("G3"));
-// console.log(controller.parseGuess("H0"));
-// console.log(controller.parseGuess("A7"));
-// console.log(controller.parseGuess("Z9"));
+controller.processGuess("A1");
+
+controller.processGuess("A6");
+controller.processGuess("B6");
+controller.processGuess("C6");
+
+controller.processGuess("C4");
+controller.processGuess("D4");
+controller.processGuess("E4");
+
+controller.processGuess("B0");
+controller.processGuess("B1");
+controller.processGuess("B2");
