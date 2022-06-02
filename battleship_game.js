@@ -30,13 +30,15 @@ var model = {
         for (var i = 0; i < this.numShips; i++) {
             var ship = this.ships[i];
             var index = ship.locations.indexOf(guess);
+
             if (index >= 0) {
                 ship.hits[index] = "hit";
                 view.displayHit(guess);
                 view.displayMessage("HIT!");
+
                 if (this.isSunk(ship)) {
-                    this.shipSunk++;
                     view.displayMessage("You sank my battleship!");
+                    this.shipSunk++;
                 }
                 return true;
             }
@@ -77,8 +79,7 @@ function parseGuess(guess) {
     if (guess === null || guess.length !== 2) {
         alert("Oops, please enter a letter and number on the board.");
     } else {
-        var firstChar = guess.charAt(0);
-        var row = alphabet.indexOf(firstChar);
+        var row = alphabet.indexOf(guess.charAt(0));
         var column = guess.charAt(1);
 
         if (isNaN(row) || isNaN(column)) {
