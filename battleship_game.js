@@ -1,4 +1,3 @@
-
 var view = {
 	displayMessage: function(msg) {
 		var messageArea = document.getElementById("messagearea");
@@ -57,6 +56,21 @@ var model = {
     }
 };
 
+var controller = {
+    guesses: 0,
+
+    processGuess: function(guess) {
+        var location = parseGuess(guess); // should this be this.parseGuess(location)?
+        if (location) {
+            this.guesses++;
+            var hit = model.fire(location);
+            if (hit && model.shipSunk === model.numShips) {
+                view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses!");
+            }
+        }
+    }
+};
+
 function parseGuess(guess) {
     var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
 
@@ -78,45 +92,27 @@ function parseGuess(guess) {
     return null;
 }
 
-var controller = {
-    guesses: 0,
+function init() {
+    var fireButton = document.getElementById("firebutton");
+    fireButton.onclick = handleFireButton;
+    var guessInput = document.getElementById("guessinput");
+    guessInput.onkeydown = handleKeyPress;
+}
 
-    processGuess: function(guess) {
-        var location = parseGuess(guess); // should this be this.parseGuess(location)?
-        if (location) {
-            this.guesses++;
-            var hit = model.fire(location);
-            if (hit && model.shipSunk === model.numShips) {
-                view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses!");
-            }
-        }
-    },
-};
+function handleKeyPress(e) {
+    var fireButton = document.getElementById("firebutton");
+    if (e.keyCode === 13) {
+        fireButton.click();
+        return false;
+    }
+}
 
-// model.fire("53");
+function handleFireButton() {
+    var guessInput = document.getElementById("guessinput");
+    var guess = guessInput.value;
+    controller.processGuess(guess);
 
-// model.fire("06");
-// model.fire("16");
-// model.fire("26");
+    guessInput.value = "";
+}
 
-// model.fire("34");
-// model.fire("24");
-// model.fire("44");
-
-// model.fire("12");
-// model.fire("11");
-// model.fire("10");
-
-controller.processGuess("A1");
-
-controller.processGuess("A6");
-controller.processGuess("B6");
-controller.processGuess("C6");
-
-controller.processGuess("C4");
-controller.processGuess("D4");
-controller.processGuess("E4");
-
-controller.processGuess("B0");
-controller.processGuess("B1");
-controller.processGuess("B2");
+window.onload = init;
