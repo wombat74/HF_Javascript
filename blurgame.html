@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blur Game</title>
+    <style> body { margin: 20px; }
+            img { margin: 20px;}
+    </style>
+    <script>
+        var photoLocation = "blur_game_images/";
+
+        function init() {
+            var images = document.getElementsByTagName("img");
+            for (var i = 0; i < images.length; i++) {
+                images[i].onclick = showAnswer;
+            }
+        }
+
+        function showAnswer(eventObj) {
+            var image = eventObj.target;
+
+            var name = image.id;
+            name = name + ".jpg";
+            image.src = photoLocation + name;
+        }
+        
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <h1>Blur Game</h1>
+    <img src="blur_game_images/zeroblur.jpg" alt="" id="zero">
+    <img src="blur_game_images/oneblur.jpg" alt="" id="one">
+    <img src="blur_game_images/twoblur.jpg" alt="" id="two">
+    <img src="blur_game_images/threeblur.jpg" alt="" id="three">
+    <img src="blur_game_images/fourblur.jpg" alt="" id="four">
+    <img src="blur_game_images/fiveblur.jpg" alt="" id="five">
+</body>
+</html>
