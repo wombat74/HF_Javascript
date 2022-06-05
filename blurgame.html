@@ -9,6 +9,8 @@
             img { margin: 20px;}
     </style>
     <script>
+        window.onload = init;
+        
         var photoLocation = "blur_game_images/";
 
         function init() {
@@ -25,8 +27,6 @@
             name = name + ".jpg";
             image.src = photoLocation + name;
         }
-        
-        window.onload = init;
     </script>
 </head>
 <body>
