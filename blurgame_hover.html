@@ -14,9 +14,10 @@
         var photoLocation = "blur_game_images/";
 
         function init() {
-            var images = document.getElementsByTagName("img");
+            var images = document.getElementsByTagName("img"); // returns a NodeList of elements, similar to an array
             for (var i = 0; i < images.length; i++) {
-                images[i].onclick = showAnswer;
+                images[i].onmouseover = showAnswer;
+                images[i].onmouseout = blurAnswer;
             }
         }
 
@@ -26,11 +27,11 @@
             var name = image.id;
             name = name + ".jpg";
             image.src = photoLocation + name;
-
-            setTimeout(blurAnswer, 2000, image);
         }
 
-        function blurAnswer(image) {
+        function blurAnswer(eventObj) {
+            var image = eventObj.target;
+
             var name = image.id;
             name = name + "blur.jpg";
             image.src = photoLocation + name;
