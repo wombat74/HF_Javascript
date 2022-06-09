@@ -1,11 +1,11 @@
-var passengers = [ { name: "Jane Doloop", paid: true },
-                   { name: "Dr. Evel", paid: true },
-                   { name: "Sue Property", paid: false },
-                   { name: "John Funcall", paid: true },
-                   { name: "Roxy Gonzalez", paid: false },
-                   { name: "Joanne Gonzalez", paid: true },
-                   { name: "Sophie Gonzalez", paid: false },
-                   { name: "Eddie Gonzalez", paid: true } ];
+var passengers = [ { name: "Jane Doloop", paid: true, ticket: "coach" },
+                   { name: "Dr. Evel", paid: true, ticket: "first class" },
+                   { name: "Sue Property", paid: false, ticket: "coach" },
+                   { name: "John Funcall", paid: true, ticket: "coach" },
+                   { name: "Roxy Gonzalez", paid: false, ticket: "first class" },
+                   { name: "Joanne Gonzalez", paid: true, ticket: "first class" },
+                   { name: "Sophie Gonzalez", paid: false, ticket: "first class" },
+                   { name: "Eddie Gonzalez", paid: true, ticket: "coach" } ];
 
 
 function processPassengers(passengers, testFunction) {
@@ -17,6 +17,20 @@ function processPassengers(passengers, testFunction) {
     return true;
 }
 
+function serveCustomer(passenger) {
+    createDrinkOrder(passenger); // get drink order
+    // get dinner order
+    // pick up trash
+}
+
+function createDrinkOrder(passenger) {
+    if (passenger.ticket === "first class") {
+        alert("Would you like a cocktail or wine?");
+    } else {
+        alert("Your choices are cola or water.");
+    }
+}
+
 function checkNoFlyList(passenger) {
     return (passenger.name === "Dr. Evel");
 }
@@ -26,7 +40,15 @@ function checkNotPaid(passenger) {
 }
 
 function printPassenger(passenger) {
-    console.log("Passenger name: " + passenger.name + ", Has passenger paid?: " + passenger.paid);
+    var message = passenger.name
+
+    if (passenger.paid) {
+        message = message + " paid for their ticket."
+    } else {
+        message = message + " didn't pay for their ticket."
+    }
+
+    console.log(message);
     return false;
 }
 

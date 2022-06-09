@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun</title>
+    <script>
+        window.onload = init;
+
+        function init() {
+            function fun(echo) {
+                console.log(echo);
+            }
+
+            fun("hello");
+
+            function boo(aFunction) {
+                aFunction("boo");
+            }
+
+            boo(fun);
+
+            console.log(fun);
+
+            fun(boo);
+
+            var moreFun = fun;
+
+            moreFun("Hello again");
+
+            function echoMaker() {
+                return fun;
+            }
+
+            var bigFun = echoMaker();
+            bigFun("Is there an echo?");
+
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
