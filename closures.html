@@ -62,6 +62,25 @@
             // console.log(myMult(20));
             // console.log(myMult(60));
             // console.log(myMult(100));
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // function makeTimer(doneMessage, n) {
+            //     setTimeout(() => { // same thing as: setTimeout(function() {...
+            //         alert(doneMessage);
+            //     }, n);
+            // }
+
+            function setTimer(doneMessage, n) {
+                setTimeout(function() {
+                    alert(doneMessage);
+                }, n);
+
+                doneMessage = "OUCH!"; // in this case the setTimer() function uses the locally set variable doneMessage
+            }
+
+            //makeTimer("Cookies are done!" , 1000);
+            setTimer("Cookies are done!" , 1000);
         }
     </script>
 </head>
