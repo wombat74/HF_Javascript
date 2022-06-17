@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+
+    <script>
+        window.onload = function() {
+
+            var count = 0;
+
+            function counter() {
+                count = count + 1;
+                return count;
+            }
+
+            // console.log(counter());
+            // console.log(counter());
+            // console.log(counter());
+
+            function myCounter() {
+                var incrementer = 0; // Set local variable in the function's scope
+
+                function countMe() { // define new function in the myCounter() scope
+                    incrementer = incrementer + 1;
+                    return incrementer;
+                }
+
+                return countMe; // return a reference to the countMe() function
+            }
+            
+            var output = myCounter(); // assign the function reference (countMe()) to a variable
+
+            // console.log(output()); // execute the function reference that was assigned to the variable
+            // console.log(output()); // each time the function is called, the [incrementer] variable in 
+            // console.log(output()); // the original function scope is incremented.
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            function makePassword(password) {
+                return function checkPassword(passwordGuess) {
+                    return (passwordGuess === password);
+                };
+            }
+
+            // myPasswordCheck = makePassword("Sophie");
+            // console.log(myPasswordCheck("Sophie"));
+            // console.log(myPasswordCheck("Eddie"));
+            // console.log(myPasswordCheck("Joanne"));
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            function multN(n) {
+                return function multY(y) {
+                    return n * y;
+                }
+            }
+
+            // myMult = multN(5);
+            // console.log(myMult(20));
+            // console.log(myMult(60));
+            // console.log(myMult(100));
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+            // function makeTimer(doneMessage, n) {
+            //     setTimeout(() => { // same thing as: setTimeout(function() {...
+            //         alert(doneMessage);
+            //     }, n);
+            // }
+
+            function setTimer(doneMessage, n) {
+                setTimeout(function() {
+                    alert(doneMessage);
+                }, n);
+
+                doneMessage = "OUCH!"; // in this case the setTimer() function uses the locally set variable doneMessage
+            }
+
+            //makeTimer("Cookies are done!" , 1000);
+            setTimer("Cookies are done!" , 1000);
+        }
+    </script>
+</head>
+<body>
+    <h1>
+        Closures!
+    </h1>
+    
+</body>
+</html>

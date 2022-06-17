@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure with event handler</title>
+    <style>
+        body, button { margin: 10px; }
+        div { padding: 10px; }  
+    </style>
+    <script>
+        var count = 0;
+
+        window.onload = () => {
+            var button = document.getElementById("clickme");
+            button.onclick = handleClick;
+        };
+
+        function handleClick() {
+            var message = "You clicked me ";
+            var div = document.getElementById("message");
+            count++;
+            div.innerHTML = message + count + " time(s)!";
+        }
+    </script>
+</head>
+<body>
+    <h1>
+        Closure with event handler!
+    </h1>
+
+    <button id="clickme">Click me!</button>
+    <div id="message"></div>
+    
+</body>
+</html>
