@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Prototype</title>
+    <script>
+        windo.onload = () => {
+            function CarPrototype(carParams) {
+                this.make = carParams.make;
+                this.model = carParams.model;
+                this.year = carParams.year;
+                this.driveType = carParams.driveType;
+                this.motors = carParams.motors;
+                this.color = carParams.color;
+                this.started = false;
+                this.start = () => {
+                    this.started = true;
+                };
+                this.stop = () => {
+                    this.started = false;
+                };
+                this.drive = () => {
+                    if (this.started) {
+                        console.log(this.make + " " + this.model + " goes zoom zoom!");
+                    } else {
+                        console.log("Start the engine first.")
+                    }
+                };
+            };
+
+            var carPolestar = {
+                make: "Polestar",
+                model: "3",
+                year: 2023,
+                driveType: "Electric",
+                motors: 2,
+                color: "concrete"
+            };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        };
+    </script>
+</head>
+<body>
+    <h1>
+        Car Prototype
+    </h1>
+    
+</body>
+</html>
