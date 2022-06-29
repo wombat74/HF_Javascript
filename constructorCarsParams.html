@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Constructor w/params</title>
+    <script>
+        window.onload = () => {
+            var cadiParams = {
+                make: "GM",
+                model: "Cadillac",
+                year: 1955,
+                passengers: 5,
+                convertible: false,
+                mileage: 12892
+            };
+
+            var cadi = new Car(cadiParams);
+
+            function Car(params) {
+                this.make = params.make;
+                this.model = params.model;
+                this.year = params.year;
+                this.color = params.color;
+                this.passengers = params.passengers;
+                this.convertible = params.convertible;
+                this.mileage = params.mileage;
+                this.started = false;
+                this.start = () => {
+                    this.started = true;
+                };
+                this.stop = () => {
+                    this.started = false;
+                };
+                this.drive = () => {
+                    if (this.started) {
+                        console.log(this.make + " " + this.model + " goes zoom zoom!");
+                    } else {
+                        console.log("Start the engine first.")
+                    }
+                }
+            }
+
+            cadi.start();
+            cadi.drive();
+            cadi.drive();
+            cadi.stop();
+        };
+    </script>
+</head>
+<body>
+    <h1>
+        Car Constructor with parameters!
+    </h1>
+    
+</body>
+</html>
