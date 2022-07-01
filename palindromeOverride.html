@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance Override Pallindrome</title>
+    <script>
+        window.onload = () => {
+            String.prototype.pallindromeCheck = function() {
+                return (this.split("").reverse().join("") === this.valueOf());
+            };
+
+            var stringList = ["eddie", "tacocat", "sophie", "jojoj", "eve", "kayak", "mom", "wow", "Not a pallindrome"];
+
+            for (var i = 0; i < stringList.length; i++) {
+                var phrase = stringList[i];
+                if (phrase.pallindromeCheck()) {
+                    console.log("THIS IS A PALLINDROME!: " + phrase);
+                } else {
+                    console.log("THIS IS NOT A PALLINDROME!: " + phrase);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Inheritance Override Pallindrome</h1>
+</body>
+</html>
