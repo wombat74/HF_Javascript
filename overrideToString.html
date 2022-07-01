@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Override toString</title>
+    <script>
+        window.onload = () => {
+            function Robot(name, year, owner) {
+                this.name = name;
+                this.year = year;
+                this.owner = owner;
+            }
+
+            // overriding the toString method to return a custom response
+            Robot.prototype.toString = function() {
+                return this.name + " Robot belonging to " + this.owner;
+            }
+
+            var toy = new Robot("Toy", 2013, "Avary");
+
+            console.log(toy.toString());
+            console.log("Robot is: " + toy);
+        }
+    </script>
+</head>
+<body>
+    <h1>
+        Override toString
+    </h1>
+</body>
+</html>

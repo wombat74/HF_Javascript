@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Prototype</title>
+    <title>Show Dog Final</title>
     <script>
         window.onload = () => {
             function Dog(name, breed, weight) {
@@ -31,12 +31,6 @@
                 console.log("Wag!");
             };
 
-            var fido = new Dog("Fido", "Mixed", 38);
-            var fluffy = new Dog("Fluffy", "Poodle", 30);
-            var spot = new Dog("Spot", "Chihuahua", 10);
-
-            var barnaby = new Dog("Barnaby", "Basset Hound", 55);
-
             Dog.prototype.sitting = false;
 
             Dog.prototype.sit = function() {
@@ -46,11 +40,6 @@
                     this.sitting = true;
                     console.log(this.name + " is now sitting.");
                 }
-            }
-
-            // override the prototype method for bark()
-            spot.bark = function () {
-                console.log(this.name + " says Woof!");
             }
 
             // create ShowDog constructor
@@ -83,57 +72,28 @@
                 console.log("Groom");
             }
 
+            var fido = new Dog("Fido", "Mixed", 38);
+            var fluffy = new Dog("Fluffy", "Poodle", 30);
+            var spot = new Dog("Spot", "Chihuahua", 10);
             var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+            var beatrice = new ShowDog("Beatrice", "Pomeranian", 5, "Hamilton");
 
-            // check to see if dogs are instance of constructors
-
-            if (fido instanceof Dog) {
-                console.log("Fido is a dog.")
+            // override the prototype method for bark()
+            spot.bark = function () {
+                console.log(this.name + " says Woof!");
             }
 
-            if (fido instanceof ShowDog) {
-                console.log("Fido is a show dog.")
-            }
-
-            if (scotty instanceof Dog) {
-                console.log("Scotty is a dog.")
-            }
-
-            if (scotty instanceof ShowDog) {
-                console.log("Scotty is a show dog.")
-            }
-
-            console.log("Fido constructor is " + fido.constructor);
-            console.log("Scotty constructor is " + scotty.constructor);
-
-            // scotty.stack();
-            // scotty.bark();
-            // scotty.gait("Scotty");
-            // console.log(scotty.league);
-            // console.log(scotty.species);
-
-            // fido.bark();
-            // fido.run();
-            // fido.wag();
-            // fido.sit();
-            // fido.sit();
-            // console.log("--------------------")
-
-            // fluffy.bark();
-            // fluffy.run();
-            // fluffy.wag();
-            // console.log("--------------------")
-
-            // spot.bark();
-            // spot.run();
-            // spot.wag();
-            // console.log("--------------------")
-
-            // barnaby.sit();
+            fido.bark();
+            fluffy.bark();
+            spot.bark();
+            scotty.bark();
+            beatrice.bark();
+            scotty.gait("Walk");
+            beatrice.groom();
         }
     </script>
 </head>
 <body>
-    <h1>Dog Prototype</h1>
+    <h1>Dog Show</h1>
 </body>
 </html>
